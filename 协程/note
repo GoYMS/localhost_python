@@ -1,0 +1,59 @@
+#协程
+    -参考资料 ：
+       https://segmentfault.com/a/1190000009781688
+       http://python.jobbole.com/86481/
+       http://python.jobbole.com/87310/
+#迭代器
+    -可迭代（Iterable）：直接作用于for循环的变量
+    -迭代器（Iterator）：不但可以作用于for循环，还可以被next调用
+    -list是典型的可迭代对象，但不是迭代器
+    -通过isinstance判断是迭代器还是可迭代的 
+      terable 判断是否是可迭代
+      Iterator 判断是否是迭代器
+      案例1
+    -iterable和iterator可以转换，通过iter函数  案例2
+#生成器
+    -generator:一边循环，一边计算下一个元素的机制/算法
+    -需要满足三个条件:
+           -每次调用都产生for循环需要的下一个元素或者如果达到最后一个后，爆出Stoplteration异常
+           -可以被next函数调用
+    -如何生成一个生成器
+      1.直接使用
+       例；
+           l=[ x*x for x in range(5)]   放在中括号中是列表生成器
+           g=( x*x for x in range(5))   放在小括号中是生成器
+      2.如果函数中包含yield，则这个函数就叫生成器，next调用函数，遇到yield返回
+      案例3
+      
+#协程
+    -实现协程比较好的报有asyncio,tornado,gevent
+    -定义：协程 是为了非抢占式多任务产生字程序的计算机程序组件，协程允许不同的入口点在不同位置暂停开始执行程序
+         从技术角度讲，协程就是一个你可以暂停执行的函数，
+    -协程的实现
+         .yield的返回
+         .send调用 
+         案例4
+         
+#协程的四个状态
+    -inspect.getgeneratorstate(...) 函数确定，该函数会返回下述字符串中的一个：
+    GEN_CREATE:等待开始执行
+    GEN_RUNNING:解释器正在执行，这个状态一般看不到
+    GEN_SUSPENDED:在yield表达式处暂停
+    GEN_CLOSED:执行结束
+    -next 预激（prime）
+#协程终止
+    -协程中未处理的异常会向上冒泡，传给next函数或send方法的调用方（即触发协程的对象）
+    -终止协程的一种方式：发送某个哨符值，让协程退出，内置的None和Ellipsis等常量经常用作哨符值==
+    
+#yield from
+    -调用协程为了得到协程，协程必须正常终止
+    -生成器正常终止会发出StopIteration异常，异常对象的vlaue属性保存返回值
+    -yield from从内部捕获StopIteration异常
+    
+......其余没有听(太枯燥了），如有需要，届时再听--28协程
+    
+    
+
+     
+      
+      
